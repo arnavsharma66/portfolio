@@ -3,7 +3,7 @@
 My corner of the internet. Built from scratch because using a template felt like cheating.
 
 ## 🔗 Live Site
-**(https://arnavsharma66.github.io/portfolio/)**
+**(https://arnavsharmaxd.vercel.app/)**
 
 ---
 
