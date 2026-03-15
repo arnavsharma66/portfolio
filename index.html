@@ -86,8 +86,38 @@ section{padding:7rem 4rem}
 .skill-level{position:absolute;top:2rem;right:2rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;padding:.3rem .6rem;border:1px solid var(--border);color:rgba(240,236,227,.3);text-transform:uppercase}
 
 #projects{background:var(--bg)}
-.projects-header{margin-bottom:1rem}
+.projects-header{margin-bottom:3.5rem}
 .projects-header h2{font-family:var(--mono);font-size:clamp(2rem,5vw,3.5rem);font-weight:700;letter-spacing:-.03em;line-height:1}
+
+/* ── HIGHLIGHT CARD ── */
+.project-highlight{display:grid;grid-template-columns:1fr 1fr;min-height:380px;margin-bottom:5rem;text-decoration:none;color:var(--fg);position:relative;overflow:hidden;opacity:0;transform:translateY(30px)}
+.highlight-left{background:#111;padding:3rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;border:1px solid var(--border);transition:background .4s}
+.highlight-left::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,77,28,.06) 0%,transparent 60%);pointer-events:none}
+.project-highlight:hover .highlight-left{background:#161616}
+.hl-badge{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.5rem}
+.hl-badge::before{content:'';width:20px;height:1px;background:var(--accent)}
+.hl-title{font-family:var(--mono);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;letter-spacing:-.04em;line-height:.95;margin-bottom:1.2rem}
+.hl-title .hl-accent{color:var(--accent2)}
+.hl-desc{font-size:.95rem;line-height:1.75;color:rgba(240,236,227,.5);font-weight:300;max-width:420px;margin-bottom:2rem}
+.hl-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+.hl-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .65rem;background:rgba(255,228,77,.06);border:1px solid rgba(255,228,77,.2);color:rgba(255,228,77,.7)}
+.hl-arrow-row{display:flex;align-items:center;gap:.75rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);opacity:0;transform:translateX(-8px);transition:opacity .35s,transform .35s}
+.project-highlight:hover .hl-arrow-row{opacity:1;transform:translateX(0)}
+.highlight-right{background:#0d0d0d;border:1px solid var(--border);border-left:none;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hl-visual{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.hl-waveform{width:85%;height:140px;display:flex;align-items:center;justify-content:center;gap:3px}
+.hl-bar{width:3px;background:linear-gradient(to top,var(--accent),var(--accent2));border-radius:2px;animation:waveAnim 1.4s ease-in-out infinite}
+.hl-bar:nth-child(odd){animation-delay:.15s}
+.hl-bar:nth-child(3n){animation-delay:.3s}
+.hl-bar:nth-child(5n){animation-delay:.05s}
+@keyframes waveAnim{0%,100%{transform:scaleY(.25);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.hl-vinyl{position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,77,28,.12);display:flex;align-items:center;justify-content:center;animation:vinylSpin 20s linear infinite;opacity:.25}
+.hl-vinyl::before{content:'';position:absolute;width:60px;height:60px;border-radius:50%;border:1px solid rgba(255,77,28,.2)}
+.hl-vinyl::after{content:'';position:absolute;width:10px;height:10px;border-radius:50%;background:rgba(255,228,77,.3)}
+@keyframes vinylSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.highlight-right::after{content:'HARMONIUM';position:absolute;bottom:1.5rem;right:1.5rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;color:rgba(240,236,227,.08);text-transform:uppercase}
+
+/* ── PROJECT LIST ── */
 .project-list{display:flex;flex-direction:column}
 .project-item{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--fg);position:relative;overflow:hidden;transition:padding-left .4s ease;opacity:0;transform:translateY(25px)}
 .project-item:first-child{border-top:1px solid var(--border)}
@@ -101,6 +131,9 @@ section{padding:7rem 4rem}
 .tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .7rem;border:1px solid var(--border);color:rgba(240,236,227,.4);white-space:nowrap}
 .project-arrow{position:absolute;right:2rem;font-size:1.2rem;color:var(--accent);opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .3s}
 .project-item:hover .project-arrow{opacity:1;transform:translateX(0)}
+
+@media(max-width:900px){.project-highlight{grid-template-columns:1fr}.highlight-right{display:none}}
+@media(max-width:768px){.project-highlight{margin-bottom:3rem}.hl-title{font-size:2.2rem}}
 
 #contact{background:var(--accent);color:#0a0a0a;text-align:center;padding:8rem 4rem;overflow:hidden}
 #contact .section-label{color:rgba(0,0,0,.4);justify-content:center}
@@ -197,7 +230,7 @@ footer p{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-trans
           <div class="stat-label">Years coding</div>
         </div>
         <div>
-          <div class="stat-num" data-target="5">0</div>
+          <div class="stat-num" data-target="6">0</div>
           <div class="stat-label">Projects built</div>
         </div>
         <div>
@@ -277,6 +310,33 @@ footer p{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-trans
   <div class="projects-header">
     <h2>Things I've<br>actually shipped</h2>
   </div>
+
+  <!-- ── HARMONIUM HIGHLIGHT ── -->
+  <a href="https://github.com/arnavsharma66" target="_blank" class="project-highlight">
+    <div class="highlight-left">
+      <div>
+        <div class="hl-badge">Featured Project</div>
+        <div class="hl-title">Harmo<span class="hl-accent">nium</span></div>
+        <p class="hl-desc">A music discovery and playlist tool built for people who actually care about what they listen to. Surfaces new artists, curates moods, and turns your taste into something explorable.</p>
+        <div class="hl-tags">
+          <span class="hl-tag">HTML</span>
+          <span class="hl-tag">CSS</span>
+          <span class="hl-tag">JavaScript</span>
+          <span class="hl-tag">Music API</span>
+          <span class="hl-tag">Open Source</span>
+        </div>
+      </div>
+      <div class="hl-arrow-row">&#x2197; View Project</div>
+    </div>
+    <div class="highlight-right">
+      <div class="hl-visual">
+        <div class="hl-vinyl"></div>
+        <div class="hl-waveform" id="hlWave"></div>
+      </div>
+    </div>
+  </a>
+
+  <!-- ── PROJECT LIST ── -->
   <div class="project-list">
     <a href="https://github.com/arnavsharma66/LifeOs" target="_blank" class="project-item">
       <div class="project-num">001</div>
@@ -292,14 +352,20 @@ footer p{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-trans
       </div>
       <span class="project-arrow">&#x2197;</span>
     </a>
-    <div class="project-item" style="pointer-events:none">
+    <a href="https://github.com/arnavsharma66" target="_blank" class="project-item">
       <div class="project-num">002</div>
       <div class="project-info">
-        <h3>Next Project</h3>
-        <p>Something is brewing. Watch the GitHub.</p>
+        <h3>GameBooth</h3>
+        <p>Gaming discovery site powered by the RAWG API. Browse, filter, and find your next obsession — including a dedicated Free Games Drop page.</p>
       </div>
-      <div class="project-tags"><span class="tag">Coming Soon</span></div>
-    </div>
+      <div class="project-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JS</span>
+        <span class="tag">RAWG API</span>
+      </div>
+      <span class="project-arrow">&#x2197;</span>
+    </a>
   </div>
 </section>
 
@@ -316,7 +382,7 @@ footer p{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-trans
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       LinkedIn
     </a>
-    <a href="mailto:arnavsharma8002@gmail.com" class="social-btn">
+    <a href="/cdn-cgi/l/email-protection#d9b8abb7b8afaab1b8abb4b8e1e9e9eb99beb4b8b0b5f7bab6b4" class="social-btn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       Email Me
     </a>
@@ -331,37 +397,47 @@ footer p{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-trans
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
+// ── CURSOR ──
 var cursor = document.getElementById('cursor');
 var ring = document.getElementById('cursor-ring');
 var mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
 document.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
 (function tick(){
-  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-  rx += (mx - rx) * .12; ry += (my - ry) * .12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+  rx += (mx-rx)*.12; ry += (my-ry)*.12;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
   requestAnimationFrame(tick);
 })();
 
-var bar = document.getElementById('loaderBar');
-var pct = document.getElementById('loaderPct');
-var p = 0;
+// ── LOADER ── guaranteed to dismiss
+var loaderEl  = document.getElementById('loader');
+var barEl     = document.getElementById('loaderBar');
+var pctEl     = document.getElementById('loaderPct');
+var p = 0, dismissed = false;
+
+function dismissLoader(){
+  if(dismissed) return;
+  dismissed = true;
+  barEl.style.width = '100%';
+  pctEl.textContent = '100%';
+  gsap.timeline()
+    .to(loaderEl, {yPercent:-100, duration:1, ease:'power4.inOut', delay:.25,
+        onComplete: function(){ loaderEl.style.display='none'; }})
+    .to('#mainNav',            {opacity:1, duration:.6}, '-=.4')
+    .to('.hero-eyebrow',       {opacity:1, duration:.6}, '-=.4')
+    .to('.hero-name span',     {y:0, stagger:.12, duration:.9, ease:'power4.out'}, '-=.3')
+    .to('.hero-tagline',       {opacity:1, y:0, duration:.7, ease:'power3.out'}, '-=.5')
+    .to('.hero-scroll-hint',   {opacity:1, duration:.5}, '-=.3');
+}
+
 var iv = setInterval(function(){
   p += Math.random() * 18;
-  if(p >= 100){ p = 100; clearInterval(iv); }
-  bar.style.width = p + '%';
-  pct.textContent = Math.floor(p) + '%';
+  if(p >= 100){ clearInterval(iv); dismissLoader(); return; }
+  barEl.style.width = p + '%';
+  pctEl.textContent = Math.floor(p) + '%';
 }, 120);
 
-var tl = gsap.timeline();
-tl.to('.loader-name span', {y:0, duration:1, ease:'power4.out', delay:.3})
-  .to('#loader', {yPercent:-100, duration:1, ease:'power4.inOut', delay:1.2,
-    onComplete: function(){ document.getElementById('loader').style.display='none'; }
-  })
-  .to('#mainNav', {opacity:1, duration:.6}, '-=.4')
-  .to('.hero-eyebrow', {opacity:1, duration:.6}, '-=.4')
-  .to('.hero-name span', {y:0, stagger:.12, duration:.9, ease:'power4.out'}, '-=.3')
-  .to('.hero-tagline', {opacity:1, y:0, duration:.7, ease:'power3.out'}, '-=.5')
-  .to('.hero-scroll-hint', {opacity:1, duration:.5}, '-=.3');
+setTimeout(dismissLoader, 3000); // hard fallback
 
 gsap.utils.toArray('.fact-row').forEach(function(el, i){
   gsap.to(el, {opacity:1, x:0, duration:.6, ease:'power3.out', delay:i*.07,
@@ -373,8 +449,26 @@ gsap.utils.toArray('.skill-card').forEach(function(el, i){
     scrollTrigger:{trigger:el, start:'top 90%'}});
 });
 
+// Build waveform bars
+(function(){
+  var w = document.getElementById('hlWave');
+  if(!w) return;
+  var heights = [18,35,55,80,100,85,60,42,70,95,110,90,65,45,75,105,88,58,38,68,98,112,82,52,40,72,100,86,62,44];
+  heights.forEach(function(h,i){
+    var bar = document.createElement('div');
+    bar.className = 'hl-bar';
+    bar.style.height = h + 'px';
+    bar.style.animationDelay = (i * 0.045 % 0.6) + 's';
+    w.appendChild(bar);
+  });
+})();
+
+// Animate highlight card
+gsap.to('.project-highlight', {opacity:1, y:0, duration:.9, ease:'power4.out',
+  scrollTrigger:{trigger:'.project-highlight', start:'top 85%'}});
+
 gsap.utils.toArray('.project-item').forEach(function(el, i){
-  gsap.to(el, {opacity: el.style.pointerEvents === 'none' ? 0.3 : 1, y:0, duration:.6, ease:'power3.out', delay:i*.1,
+  gsap.to(el, {opacity:1, y:0, duration:.6, ease:'power3.out', delay:i*.1,
     scrollTrigger:{trigger:el, start:'top 88%'}});
 });
 
@@ -415,9 +509,6 @@ gsap.from('.contact-sub', {opacity:0, y:30, duration:.8, ease:'power3.out', dela
 
 gsap.from('.socials-row', {opacity:0, y:25, duration:.8, ease:'power3.out', delay:.3,
   scrollTrigger:{trigger:'.socials-row', start:'top 90%'}});
-
-gsap.to('.floater', {yPercent:-30, ease:'none',
-  scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:1.5}});
 </script>
 </body>
 </html>
